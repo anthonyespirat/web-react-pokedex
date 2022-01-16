@@ -1,0 +1,69 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--background-card);
+    border: 2px dashed var(--border-card);
+    border-radius: 4px;
+    width: calc((100% / 6) - 15px);
+    min-height : 320px;
+    max-height : 320px;
+    padding: .2em .4em;
+}
+.card__name, .card__id{
+    width: 100%;
+    font-family: var(--font-pokemon);
+
+}
+.card__title {
+    width: 100%;
+}
+.card__id{
+    text-align: right;
+    color: var(--text-color-id);
+    font-size: .8em;
+    padding-bottom: .4em;
+}
+.card__name {
+    text-align: center;
+}
+.card__sprite {
+    width: 100%;
+    padding: .8em 0;
+}
+.card__sprite img {
+    width: 110px;
+    height: 110px;
+    margin: auto;
+    display: block;
+    image-rendering: pixelated;
+}
+.card__types {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    text-align: center;
+}
+.card__types div:nth-child(1) {
+    background-color: var(--type-grass);
+}
+.card__types div:nth-child(2) {
+    background-color: var(--type-poison);
+}
+.card__type {
+    font-size: .8em;
+    border-radius: 3.5px;
+    padding: .2em 1.5em;
+}
+.card__evolv {
+    display: flex;
+    padding: .6em 2em;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.card__evolv img {
+    width: 40px;
+    height: 40px;
+}
