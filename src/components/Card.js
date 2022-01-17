@@ -6,14 +6,20 @@ import pokeServices from '../api/pokeServices'
 /* gen 3 end at 386 */
 const Card = () => {
 
-    // Need to to start false for next condition
     const [pokeData, setPokeData] = useState({})
+    const [evolution, setEvolution] = useState()
 
     useEffect(()=> {
-        pokeServices.fetchPokemon(151).then((data)=>{
+        pokeServices.fetchPokemon(4).then((data)=>{
             setPokeData(pokeServices.formatPokeApi(data))
         });
+        pokeServices.fetchChain(4).then((data)=>  {
+            console.log(data);
+            setEvolution(data)
+        })
     }, [])
+
+
 
         return (
             // Object.entries transform objects in array, then check if statement is true
