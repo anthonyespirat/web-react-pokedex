@@ -1,0 +1,71 @@
+.card__types {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    text-align: center;
+}
+.card__type {
+    font-size: .8em;
+    border-radius: 3.5px;
+    padding: .2em 1.5em;
+    min-width: 78px;
+    max-width: 78px;
+}
+
+
+
+/* value selector */
+.card__type[value='poison'] {
+    background-color: var(--type-poison)
+}
+.card__type[value='grass'] {
+    background-color: var(--type-grass)
+}
+.card__type[value='fire'] {
+    background-color: var(--type-fire)
+}
+.card__type[value='bug'] {
+    background-color: var(--type-bug)
+}
+.card__type[value='electric'] {
+    background-color: var(--type-electric)
+}
+.card__type[value='psychic'] {
+    background-color: var(--type-psychic)
+}
+.card__type[value='ice'] {
+    background-color: var(--type-ice)
+}
+.card__type[value='normal'] {
+    background-color: var(--type-normal)
+}
+.card__type[value='fighting'] {
+    background-color: var(--type-fighting)
+}
+.card__type[value='steel'] {
+    background-color: var(--type-steel)
+}
+.card__type[value='ghost'] {
+    background-color: var(--type-ghost)
+}
+.card__type[value='rock'] {
+    background-color: var(--type-rock)
+}
+.card__type[value='dark'] {
+    background-color: var(--type-dark)
+}
+.card__type[value='fairy'] {
+    background-color: var(--type-fairy)
+}
+.card__type[value='water'] {
+    background-color: var(--type-water)
+}
+.card__type[value='ground'] {
+    background: var(--type-ground)
+}
+.card__type[value='dragon'] {
+    background: var(--type-dragon)
+}
+.card__type[value='flying'] {
+    background: var(--type-flying)
+}
