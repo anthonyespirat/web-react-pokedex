@@ -1,38 +1,30 @@
 import './Card.css'
 import { useEffect, useState } from 'react'
 import Types from './Types'
-import miniBulbi from '../assets/mini-bulbi.png'
 import pokeServices from '../api/pokeServices'
 /* gen 3 end at 386 */
 const Card = () => {
 
     const [pokeData, setPokeData] = useState({})
-    const [evolution, setEvolution] = useState()
+    const [evolution, setEvolution] = useState([])
+    const [loading, setLoading] = useState(false)
+    
 
 
     useEffect(()=> {
-        pokeServices.fetchPokemon(8).then((data)=>{
+        pokeServices.fetchPokemon(6).then((data)=>{
             setPokeData(pokeServices.formatPokeApi(data))
         });
-        pokeServices.getEvolve(8).then((data)=>  {
-            if (data) {
-                const evolvesResult = []
-                for (let pokemon of data) {
-                    let evolveId = pokemon.url.slice(42).slice(0, -1)
-                    pokeServices.fetchPokemon(evolveId).then(data =>{
-                    let dataFormated = pokeServices.formatPokeApi(data)
-                    evolvesResult.push(dataFormated)
+         pokeServices.getEvolve(6).then((data)=> {
+            for (const pokemon of data) {
+                let pokeId = pokemon.url.slice(42).slice(0,-1);
+                pokeServices.fetchPokemon(pokeId).then( async data => {
+                    data = pokeServices.formatPokeApi(data)
+                    await setEvolution(oldData => [...oldData,data])
                     })
-                 }
-                 console.log(evolvesResult);
-                 setEvolution(evolvesResult)
-
-            } else {
-                return
-            }
-        })
+                }
+            })
     }, [])
-
 
         return (
             // Object.entries transform objects in array, then check if statement is true

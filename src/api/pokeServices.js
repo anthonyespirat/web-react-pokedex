@@ -29,9 +29,14 @@ const pokeServices = {
         return data
     
     },
-    async getEvolve (id) {
+    async getEvolve(id) {
         let evolveArray = []
         const data = await this.fetchChain(id)
+        const firstPokemon = {
+            name: data.chain.species.name,
+            url: data.chain.species.url
+        }
+        evolveArray.push(firstPokemon)
             if(data.chain.evolves_to.length === 0) {
                 return false
             } else {
