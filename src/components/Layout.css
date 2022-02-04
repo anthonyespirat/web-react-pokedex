@@ -1,8 +1,0 @@
-main {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 1em;
-    padding: 1.2em;
-    background-color: var(--background-second);
-    border-radius: 5px;
-  }

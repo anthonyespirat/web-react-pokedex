@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Layout from './components/Layout'
-import Card from './components/Card'
+import CardContainer from './components/CardContainer'
 
 ReactDOM.render(
   <React.StrictMode>
     <Layout>
 
-      <Card />
+      <CardContainer />
 
       
     </Layout>
