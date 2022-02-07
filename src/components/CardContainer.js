@@ -23,19 +23,10 @@ export default function CardContainer (){
     }
 
     useEffect(()=> {
-      async function renderPokemon() {
-        if (inputValue === '') {
-          setPokedex([])
-          getAllPokemon()
-        } else {
-          const results = pokedex.filter(pokemon =>
-            pokemon.name.toLowerCase().includes(inputValue)
-          );
-          setPokedex(results)
-        }
-      }
-      renderPokemon()
-    }, [inputValue])
+      setPokedex([])
+      getAllPokemon()
+      
+    }, [])
 
 
 
@@ -43,12 +34,19 @@ export default function CardContainer (){
   return (
     <div className='card-container'>
       {pokedex.length >= 1 ?
-
-      pokedex.map((pokemon)=> (
+        pokedex.filter((pokemon) => {
+          if (inputValue === '') {
+            return pokemon
+          }
+          else if (pokemon.name.toLowerCase().includes(inputValue.toLowerCase())) {
+            return pokemon
+          }
+        })
+      .map((pokemon)=> (
       <Card id={pokemon.id} key={pokemon.id} pokeData={pokemon}/>  
       ))
       
-      : <p> Sorry, no results match your request.  </p>}
+      : <p> Loading ...  </p>}
     </div>
   )  
   
