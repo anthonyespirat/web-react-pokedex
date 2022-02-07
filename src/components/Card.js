@@ -4,18 +4,13 @@ import Types from './Types'
 import pokeServices from '../api/pokeServices'
 import Evolves from './Evolves';
 /* gen 3 end at 386 */
-const Card = (props) => {
-
-    const [pokeData, setPokeData] = useState({})
-    const [evolution, setEvolution] = useState([])
-    
-
-
+const Card = ({pokeData}) => {
     useEffect(()=> {
+        /*
         pokeServices.fetchPokemon(props.id).then((data)=>{
             setPokeData(pokeServices.formatPokeApi(data))
         });
-        /*
+
          pokeServices.getEvolve(props.id).then((data)=> {
             for (const pokemon of data) {
                 let pokeId = pokemon.url.slice(42).slice(0,-1);
