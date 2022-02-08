@@ -20,7 +20,7 @@
 }
 .card__id{
     text-align: right;
-    color: var(--text-color-id);
+    color: var(--text-color-id)!important;
     font-size: .8em;
     padding-bottom: .4em;
 }

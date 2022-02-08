@@ -5,33 +5,28 @@ import pokeServices from '../api/pokeServices'
 
 import './CardContainer.css'
 
+export default function CardContainer() {
+  const [pokedex, setPokedex] = useState([]);
+  const inputValue = useContext(InputContext)
 
+  const maxPokemon = 151;
 
-
-export default function CardContainer (){
-    const [pokedex, setPokedex] = useState([]);
-    const inputValue = useContext(InputContext)
-
-    const maxPokemon = 151;
-
-    async function getAllPokemon() {
-      for (let i = 1; i < maxPokemon + 1; i++) {
-        const pokemon = await pokeServices.fetchPokemon(i)
-        const formatPokemon = await pokeServices.formatPokeApi(pokemon)
-        await setPokedex(oldData => [...oldData,formatPokemon])
-      }
+  async function getAllPokemon() {
+    for (let i = 1; i < maxPokemon + 1; i++) {
+      const pokemon = await pokeServices.fetchPokemon(i)
+      const formatPokemon = await pokeServices.formatPokeApi(pokemon)
+      await setPokedex(oldData => [...oldData, formatPokemon])
     }
+  }
 
-    useEffect(()=> {
-      setPokedex([])
-      getAllPokemon()
-      
-    }, [])
+  useEffect(() => {
+    setPokedex([])
+    getAllPokemon()
 
-
-
+  }, [])
 
   return (
+
     <div className='card-container'>
       {pokedex.length >= 1 ?
         pokedex.filter((pokemon) => {
@@ -42,17 +37,12 @@ export default function CardContainer (){
             return pokemon
           }
         })
-      .map((pokemon)=> (
-      <Card id={pokemon.id} key={pokemon.id} pokeData={pokemon}/>  
-      ))
-      
-      : <p> Loading ...  </p>}
+          .map((pokemon) => (
+            <Card id={pokemon.id} key={pokemon.id} pokeData={pokemon} />
+          ))
+
+        : <p> Loading ...  </p>}
     </div>
-  )  
-  
+
+  )
 }
-
-
-
-
-//
