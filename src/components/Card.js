@@ -1,6 +1,6 @@
 import './Card.css'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import Types from './Types'
 import pokeServices from '../api/pokeServices'
 // import Evolves from './Evolves';
@@ -30,20 +30,22 @@ const Card = ({ pokeData }) => {
 
 		// Object.entries transform objects in array, then check if statement is true
 		Object.entries(pokeData).length > 0 &&
-
-		<Link to="/pokemonx" className='card'>
-			<div className="card__title">
-				<div className='card__id'>n°{pokeData.id}</div>
-				<div className='card__name'>{pokeServices.upperFirstLetter(pokeData.name)}</div>
-			</div>
-			<div className='card__sprite'>
-				<img src={pokeData.sprites} alt='Pokemon sprite'></img>
-			</div>
-			<Types types={pokeData.types} />
-			{/* <div className='card__evolv'>
+		<>
+			<Link to={`${pokeData.id}`} className='card'>
+				<div className="card__title">
+					<div className='card__id'>n°{pokeData.id}</div>
+					<div className='card__name'>{pokeServices.upperFirstLetter(pokeData.name)}</div>
+				</div>
+				<div className='card__sprite'>
+					<img src={pokeData.sprites} alt={`${pokeData.name} sprite`}></img>
+				</div>
+				<Types types={pokeData.types} />
+				{/* <div className='card__evolv'>
                     <Evolves evolve={evolution} />
-                </div> */}
-		</Link>
+									</div> */}
+			</Link>
+			<Outlet />
+		</>
 	);
 
 };
