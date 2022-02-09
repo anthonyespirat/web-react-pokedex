@@ -1,0 +1,74 @@
+.sprite-frame {
+  background-color: var(--background-card);
+  border: 2px dashed var(--border-card);
+  border-radius: 6px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 1.2em;
+  width: 35%;
+}
+
+.sprite-frame__sprite-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.sprite-frame__sprite-container img {
+  width: 220px;
+  height: 220px;
+  image-rendering: pixelated;
+  margin: auto;
+}
+
+.sprite-frame__sprite-container__id, .sprite-frame__types-container__name {
+  font-family: var(--font-pokemon);
+  font-size: 1.2em;
+}
+
+.sprite-frame__sprite-container__id {
+  align-self: end;
+}
+
+.sprite-frame__types-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.sprite-frame__types-container__id {
+  display: none;
+}
+
+.sprite-frame__types-container .card__types {
+  justify-content: left;
+  gap: 2em;
+}
+
+.sprite-frame__types-container .card__type {
+  font-size: 1em;
+  font-weight: 500;
+  min-width: 100px;
+  max-width: 100px;
+}
+
+@media (max-width: 1285px) {
+  .sprite-frame {
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .sprite-frame__types-container__id {
+    display: initial;
+  }
+  .sprite-frame__sprite-container__id {
+    display: none;
+  }
+}
+@media (max-width: 945px) {
+  .sprite-frame {
+    flex-direction: column;
+  }
+}
