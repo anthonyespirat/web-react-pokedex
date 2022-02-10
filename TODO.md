@@ -1,0 +1,1 @@
+[ ] - Ajouter un max pokemon (l'ajouter dans le check du localstorage)

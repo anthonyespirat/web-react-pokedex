@@ -44,7 +44,6 @@ div.stats-gauge {
 }
 div.stats-gauge div {
   height: 100%;
-  width: 45%;
   background-color: var(--gauge-filled);
   color: var(--text-color);
 }
@@ -62,10 +61,13 @@ div.stats-gauge-value {
 .stats-frame__battle-stats__abilities__items,
 .stats-frame__battle-stats__abilities__items--secret {
   background-color: var(--background-third);
+  border-radius: 10px;
   width: 45%;
   padding: .5em;
-  text-align: center;
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   font-size: .8em;
   line-height: 1.5em;
 }
