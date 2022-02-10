@@ -24,7 +24,16 @@ const pokeServices = {
 	async fetchDescription(id) {
 		const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
 		const data = await response.json()
-		const flavorText = data.flavor_text_entries[0].flavor_text
+
+		let x = 0;
+		while (data.flavor_text_entries[x].language.name !== 'en') {
+			if (x === undefined && typeof x == 'undefined') {
+				break;
+			}
+			x ++;
+		}
+
+		const flavorText = data.flavor_text_entries[x].flavor_text
 		return flavorText
 	},
 	async fetchEvolution(id) {

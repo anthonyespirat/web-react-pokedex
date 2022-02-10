@@ -50,19 +50,29 @@ export default function PokemonViewStats(props) {
           <div className='stats-frame__battle-stats__abilities__items'>
             <div>{pokeServices.upperFirstLetter(props.pokeData.abilities[0].ability.name)}</div>
 
-            {(props.pokeData.abilities[1].is_hidden === false) ?
-              <div>{pokeServices.upperFirstLetter(props.pokeData.abilities[1].ability.name)}</div> 
-            :
-              null}
+            {(props.pokeData.abilities.length === 1) ? null :
+              (props.pokeData.abilities[1].is_hidden === false) ?
+                <div>{pokeServices.upperFirstLetter(props.pokeData.abilities[1].ability.name)}</div> 
+              :
+                null
+            }
           </div>
 
           <div className='stats-frame__battle-stats__abilities__items--secret'>
+            
             <div className='secret-ability'>Secret</div>
+            
 
-            {(props.pokeData.abilities[1].is_hidden === false) ?
-              <div>{pokeServices.upperFirstLetter(props.pokeData.abilities[2].ability.name)}</div>
-              :
-              <div>{pokeServices.upperFirstLetter(props.pokeData.abilities[1].ability.name)}</div>}           
+
+            {(props.pokeData.abilities.length === 1) ? <div>none</div> :
+              (props.pokeData.abilities[1].is_hidden === false) ?
+                <div>{(pokeServices.upperFirstLetter(props.pokeData.abilities[2].ability.name))}</div>
+                :
+                <div>{pokeServices.upperFirstLetter(props.pokeData.abilities[1].ability.name)}</div>
+            }           
+
+
+
           </div>
           
         </div>
