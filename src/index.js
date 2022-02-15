@@ -15,7 +15,7 @@ ReactDOM.render(
     <BrowserRouter>
 
     <Routes>
-    <Route path='/' element={<App/>}/>
+      <Route path='/' element={<App/>}/>
       <Route path=':pokemonId' element={<PokemonView/>}/>
     </Routes>
 

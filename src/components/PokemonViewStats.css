@@ -97,6 +97,10 @@ div.stats-gauge-value {
   gap: 1em;
 }
 
+.stats-frame__desc__details h2 {
+  line-height: 1em!important;
+}
+
 .secret-ability {
   text-decoration: underline;
   font-style: italic;

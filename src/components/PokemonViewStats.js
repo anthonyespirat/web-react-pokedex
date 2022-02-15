@@ -7,13 +7,13 @@ export default function PokemonViewStats(props) {
 
   const [desc, setDesc] = useState([]);
   const gaugeCalculator = (value) => {
-    return (value*100)/210
+    return (value * 100) / 210
   }
 
   useEffect(() => {
-    pokeServices.fetchDescription(props.pokeData.id).then((data) => {setDesc(data)})
+    pokeServices.fetchDescription(props.pokeData.id).then((data) => { setDesc(data) })
     console.log(props.pokeData.abilities)
-  },[])
+  }, [])
 
   return (
 
@@ -26,20 +26,27 @@ export default function PokemonViewStats(props) {
 
           <div>
             <div>HP</div><div className='stats-gauge'>
-              <div style={{width: `${gaugeCalculator(props.pokeData.stats[0].base_stat)}%`}}><div className='stats-gauge-value'>{props.pokeData.stats[0].base_stat}</div></div></div>
+              <div style={{ width: `${gaugeCalculator(props.pokeData.stats[0].base_stat)}%` }}><div className='stats-gauge-value'>{props.pokeData.stats[0].base_stat}</div></div></div>
             <div>ATTACK</div><div className='stats-gauge'>
-              <div style={{width: `${gaugeCalculator(props.pokeData.stats[1].base_stat)}%`}}><div className='stats-gauge-value'>{props.pokeData.stats[1].base_stat}</div></div></div>
+              <div style={{ width: `${gaugeCalculator(props.pokeData.stats[1].base_stat)}%` }}><div className='stats-gauge-value'>{props.pokeData.stats[1].base_stat}</div></div></div>
             <div>DEFENSE</div><div className='stats-gauge'>
-              <div style={{width: `${gaugeCalculator(props.pokeData.stats[2].base_stat)}%`}}><div className='stats-gauge-value'>{props.pokeData.stats[2].base_stat}</div></div></div>
+              <div style={{ width: `${gaugeCalculator(props.pokeData.stats[2].base_stat)}%` }}><div className='stats-gauge-value'>{props.pokeData.stats[2].base_stat}</div></div></div>
           </div>
 
           <div>
             <div>ATK SPE</div><div className='stats-gauge'>
-              <div style={{width: `${gaugeCalculator(props.pokeData.stats[3].base_stat)}%`}}><div className='stats-gauge-value'>{props.pokeData.stats[3].base_stat}</div></div></div>
+              <div style={{ width: `${gaugeCalculator(props.pokeData.stats[3].base_stat)}%` }}><div className='stats-gauge-value'>{props.pokeData.stats[3].base_stat}</div></div></div>
             <div>DEF SPE</div><div className='stats-gauge'>
-              <div style={{width: `${gaugeCalculator(props.pokeData.stats[4].base_stat)}%`}}><div className='stats-gauge-value'>{props.pokeData.stats[4].base_stat}</div></div></div>
-            <div>SPEED</div><div className='stats-gauge'>
-              <div style={{width: `${gaugeCalculator(props.pokeData.stats[5].base_stat)}%`}}><div className='stats-gauge-value'>{props.pokeData.stats[5].base_stat}</div></div></div>
+              <div style={{ width: `${gaugeCalculator(props.pokeData.stats[4].base_stat)}%` }}><div className='stats-gauge-value'>{props.pokeData.stats[4].base_stat}</div></div>
+            </div>
+            <div>SPEED</div>
+            <div className='stats-gauge'>
+              <div style={{ width: `${gaugeCalculator(props.pokeData.stats[5].base_stat)}%` }}>
+                <div className='stats-gauge-value'>
+                  {props.pokeData.stats[5].base_stat}
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -52,16 +59,16 @@ export default function PokemonViewStats(props) {
 
             {(props.pokeData.abilities.length === 1) ? null :
               (props.pokeData.abilities[1].is_hidden === false) ?
-                <div>{pokeServices.upperFirstLetter(props.pokeData.abilities[1].ability.name)}</div> 
-              :
+                <div>{pokeServices.upperFirstLetter(props.pokeData.abilities[1].ability.name)}</div>
+                :
                 null
             }
           </div>
 
           <div className='stats-frame__battle-stats__abilities__items--secret'>
-            
+
             <div className='secret-ability'>Secret</div>
-            
+
 
 
             {(props.pokeData.abilities.length === 1) ? <div>none</div> :
@@ -69,12 +76,12 @@ export default function PokemonViewStats(props) {
                 <div>{(pokeServices.upperFirstLetter(props.pokeData.abilities[2].ability.name))}</div>
                 :
                 <div>{pokeServices.upperFirstLetter(props.pokeData.abilities[1].ability.name)}</div>
-            }           
+            }
 
 
 
           </div>
-          
+
         </div>
       </div>
 

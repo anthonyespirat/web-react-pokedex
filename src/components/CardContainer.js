@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
-import InputContext from '../context/Input';
+import { useEffect, useState } from 'react';
 import Card from './Card'
 import pokeServices from '../api/pokeServices'
 
@@ -7,11 +6,14 @@ import './CardContainer.css'
 
 export default function CardContainer() {
   const [pokedex, setPokedex] = useState([]);
-  const inputValue = useContext(InputContext)
   const [loading, setLoading] = useState(false)
 
-  const maxPokemon = 151;
+  const [searchValue, setSearchValue] = useState("");
+	const handleChange = event => {
+		setSearchValue(event.target.value);
+	};
 
+  const maxPokemon = 151;
   async function getAllPokemon() {
     let pokemonArray = []
     for (let i = 1; i < maxPokemon + 1; i++) {
@@ -31,6 +33,7 @@ export default function CardContainer() {
     } else {
       await getAllPokemon()
       setPokedex(JSON.parse(localStorage.getItem('pokedexdesbrow')))
+      setLoading(true)
     }
   }
 
@@ -41,14 +44,15 @@ export default function CardContainer() {
   }, [])
 
   return (
-
+    <>
+    <input placeholder='find your pokemon ...' value={searchValue} onChange={handleChange}></input>
     <div className='card-container'>
       {pokedex.length >= 151 && loading ?
         pokedex.filter((pokemon) => {
-          if (inputValue === '') {
+          if (searchValue === '') {
             return pokemon
           }
-          else if (pokemon.name.toLowerCase().includes(inputValue.toLowerCase())) {
+          else if (pokemon.name.toLowerCase().includes(searchValue.toLowerCase())) {
             return pokemon
           }
         })
@@ -58,6 +62,6 @@ export default function CardContainer() {
 
         : <p> Loading ...  </p>}
     </div>
-
+    </>
   )
 }

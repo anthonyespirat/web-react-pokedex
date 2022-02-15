@@ -49,5 +49,4 @@ const Card = ({ pokeData }) => {
 	);
 
 };
-
 export default Card;
